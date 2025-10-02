@@ -584,7 +584,7 @@ pub fn encode_many_config(pems: &[Pem], config: EncodeConfig) -> String {
 mod serde_impl {
     use super::{encode, parse, Pem};
     use core::fmt;
-    use serde::{
+    use serde_core::{
         de::{Error, Visitor},
         Deserialize, Serialize,
     };
@@ -592,7 +592,7 @@ mod serde_impl {
     impl Serialize for Pem {
         fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
         where
-            S: serde::Serializer,
+            S: serde_core::Serializer,
         {
             serializer.serialize_str(&encode(self))
         }
@@ -618,7 +618,7 @@ mod serde_impl {
     impl<'de> Deserialize<'de> for Pem {
         fn deserialize<D>(deserializer: D) -> Result<Pem, D::Error>
         where
-            D: serde::Deserializer<'de>,
+            D: serde_core::Deserializer<'de>,
         {
             deserializer.deserialize_str(PemVisitor)
         }
