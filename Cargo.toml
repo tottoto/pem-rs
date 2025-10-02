@@ -21,17 +21,17 @@ rust-version = "1.60.0"
 default = ["std"]
 std = [
     "base64/std",
-    # enable serde's std feature iff the serde and std features are both activated
-    "serde?/std",
+    # enable serde_core's std feature iff the serde and std features are both activated
+    "serde_core?/std",
 ]
-serde = ["dep:serde"]
+serde = ["dep:serde_core"]
 
 [dependencies.base64]
 version = "0.22.0"
 default-features = false
 features = ["alloc"]
 
-[dependencies.serde]
+[dependencies.serde_core]
 version = "1"
 default-features = false
 optional = true

@@ -581,6 +581,9 @@ pub fn encode_many_config(pems: &[Pem], config: EncodeConfig) -> String {
 }
 
 #[cfg(feature = "serde")]
+extern crate serde_core as serde;
+
+#[cfg(feature = "serde")]
 mod serde_impl {
     use super::{encode, parse, Pem};
     use core::fmt;
